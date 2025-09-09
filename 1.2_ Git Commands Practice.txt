@@ -1,0 +1,90 @@
+1- Open Powershell
+
+2- Make sure git is installed successfully
+>git --version
+
+3- Browse to your local repo with cd command
+
+4- Type "ls -force" and see the hidden .git file. If .git file is there,
+this means you are in your local repo. If not, find your local repo.
+>ls -force
+
+5- If you dont have a local repo, create one with the command below.
+>git -- init
+
+6- Once you are in the local repo, check the status.
+The expected output is "Your branch is up to date with 'origin/master'."
+>git status
+
+7- Create a new text file. Add some content and save it
+>notepad fridayclass.txt
+
+8- Add it to staging area
+>git add fridayclass.txt
+
+9- Commit the changes
+>git commit -m "version 1" fridayclass.txt
+
+10- Now we will push. If its the first time to push to remote, then use commands below
+>git remote add origin <RepoURL>
+>git push --set-upstream origin master
+
+11- If its not first time connecting to remote repo, then push as follows:
+>git push
+
+12- If you successfully pushed, you should see the file in GitHub (remote repo).
+
+13- Add a new file "fridayclass2.txt" in your remote repo on GitHub.
+
+14- Since local repo is not synced, you need to pull the updates from remote.
+>git pull
+
+15- Make sure fridayclass2.txt is now in the local repo.
+>ls
+
+16- Now first modify one of the existing file and push it to remote.
+Now see the version history of your files. To stop, press "Q"
+>git log
+
+17- Alternatively we can save the version history into a txt file and display later on.
+>git log > mylog.txt
+>cat mylog.txt
+Dont forget to push mylog.txt to remote
+
+18- Now copy the hash code of the last 2nd recent log history where the modified file has old contents.
+Use "checkout" command to switch to that version.
+>git checkout <HashCode> <NameOfTheFileModified>
+Now check the contents of modified file again. It should have previous contents.
+If you see error related to detach head, use command below
+>git checkout master
+
+19- Check status
+>git status
+
+20- If remote is not up to date, push to remote.
+
+21- If you can not solve a conflict, you can clone the remote repo anytime.
+>git clone <URL with .git extension at the end>
+
+22- Now remove one file from the local repo. Then restore it
+>rm <FileName>
+>ls
+>git restore <Filename>
+>ls
+
+23- Now you will create a conflict and resolve it.
+
+24- Conflict creation: Go to remote repo and modify one of the files.
+Now go to local and modify the same file again without pulling it.
+Try to push remoote. You should see an error.
+
+25- Solution: Try to pull and see the conflicting file name. Open file with notepad and remove the unncessary lines. Then add,commit and push.
+>git pull
+>notepad <FileName>
+>git add <FileName>
+>git commit -m "Conflict is resolved"
+>git push
+
+
+
+
